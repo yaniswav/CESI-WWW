@@ -62,8 +62,7 @@ void Led::errorColor(String firstColor, byte firstTime, String secondColor, byte
 
 void Led::initialize()
 {
-	
-	Serial.println("Initialisation des Leds...");
+	Serial.println("init leds");
 	ChainableLED leds(_pin, _pinData, _ledNumber);
 	leds.init();
 }

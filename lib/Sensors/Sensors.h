@@ -6,6 +6,8 @@
 
 #include "../RTClib/RTClib.h"
 
+#include <SPI.h>
+#include <SD.h>
 #include <EnvironmentCalculations.h>
 #include <Wire.h>
 #include <BME280.h>
@@ -23,7 +25,7 @@ typedef struct
     String name;
     bool error;
     float value;
-    
+
 } Sensors;
 
 class Sensor
@@ -35,6 +37,10 @@ public:
     void initialize();
     void showValues();
     byte setValues();
+    void writetoSD(bool write);
+
+private:
+    String changefileName();
 };
 
 #endif

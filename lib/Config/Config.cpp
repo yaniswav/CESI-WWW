@@ -23,6 +23,10 @@ Configuration conf[] = {
 
 Config::Config(byte version, String batchNumber) : _batchNumber(batchNumber)
 {
+	byte versionIndex = getIndex("VERSION");
+	conf[versionIndex].value = version;
+	if (version != getValue("VERSION"))
+		resetValues();
 }
 
 void Config::resetValues()
@@ -120,7 +124,7 @@ long Config::getlastActivity()
 	return lastActivity;
 }
 
-String splitString(String data, char separator, int index)
+String Config::splitString(String data, char separator, int index)
 {
 	int found = 0;
 	int strIndex[] = {0, -1};
@@ -141,7 +145,7 @@ String splitString(String data, char separator, int index)
 void Config::waitValues()
 {
 
-	Serial.println("Attente de vos valeurs...");
+	Serial.println(F("Attente de vos valeurs..."));
 	String data;
 	String name;
 	int newValue;

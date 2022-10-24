@@ -38,6 +38,7 @@ private:
 	String _batchNumber;
 	byte getIndex(String name);
 	byte getSize(int index);
+	String splitString(String data, char separator, int index);
 
 	int read(int index, int _size);
 	void writeValues(int index, int value);
